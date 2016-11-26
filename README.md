@@ -42,7 +42,7 @@ class Post extends Model
 	use SlugService;
 
 	/**
-	 * Setting which field is the slug and which field is the source for generating the sug
+	 * Setting which field is the slug and which field is the source for generating the slug
 	 * @return array
 	 */
     public function slugSettings(){
