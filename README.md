@@ -61,4 +61,3 @@ $post = new Post([
 
 $post->save();
 ```
-
