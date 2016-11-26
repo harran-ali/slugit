@@ -2,10 +2,10 @@
 Slugit is a laravel slug generator for eloquent models with support for almost all languages.
 
 ## Features
-*Generating slugs automatically by simply configuring eloquent models
-*Multi language support like English, Arabic, Hindi … etc.
-*Configuring the separator character
-*Generating unique or none unique slugs
+* Generating slugs automatically by simply configuring eloquent models
+* Multi language support like English, Arabic, Hindi … etc.
+* Configuring the separator character
+* Generating unique or none unique slugs
 
 ## Installation 
 You can install the package via composer by simply running the following command
