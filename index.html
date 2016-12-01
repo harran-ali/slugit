@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Laravel Slugit by harran-ali</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Laravel Slugit</h1>
+        <p>A Laravel slug generator for eloquent models with support for multiple languages</p>
+
+        <p class="view"><a href="https://github.com/harran-ali/slugit">View the Project on GitHub <small>harran-ali/slugit</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/harran-ali/slugit/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/harran-ali/slugit/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/harran-ali/slugit">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="slugit" class="anchor" href="#slugit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slugit</h1>
+
+<p>Slugit is a laravel slug generator for eloquent models with support for almost all languages.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Generating slugs automatically by simply configuring eloquent models</li>
+<li>Multi language support like English, Arabic, Hindi … etc.</li>
+<li>Configuring the separator character</li>
+<li>Generating unique or none unique slugs</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>You can install the package via composer by simply running the following command</p>
+
+<div class="highlight highlight-source-shell"><pre>$ composer require harran/slugit:^0.1.0</pre></div>
+
+<p>Then add the service provider to this file <code>config/app.php</code></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-s"><span class="pl-pds">'</span>providers<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> [</span>
+<span class="pl-s1">    <span class="pl-c">// ...</span></span>
+<span class="pl-s1">    <span class="pl-c1">Harran\Slugit\</span><span class="pl-c1">SlugitServiceProvider</span><span class="pl-k">::</span><span class="pl-c1">class</span></span>
+<span class="pl-s1">];</span></pre></div>
+
+<p>Final step, publish the config file using the following command</p>
+
+<div class="highlight highlight-source-shell"><pre>php artisan vendor:publish --provider=<span class="pl-s"><span class="pl-pds">"</span> Harran\Slugit\SlugitServiceProvider<span class="pl-pds">"</span></span></pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>To start using the package you need to do one simple step, you need to define in your models which field is your slug field and which field is the source of this slug field, in the case of below example our slug field is <code>slug</code> and the source field if <code>title</code>.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">namespace</span> <span class="pl-en">App</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">Illuminate\Database\Eloquent\Model</span>;</span>
+<span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">Harran\Slugit\SlugService</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">Post</span> <span class="pl-k">extends</span> <span class="pl-e">Model</span></span>
+<span class="pl-s1">{</span>
+<span class="pl-s1">    <span class="pl-k">use</span> <span class="pl-c1">SlugService</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c">/**</span></span>
+<span class="pl-s1"><span class="pl-c">     * Setting which field is the slug and which field is the source for generating the slug</span></span>
+<span class="pl-s1"><span class="pl-c">     * <span class="pl-k">@return</span> array</span></span>
+<span class="pl-s1"><span class="pl-c">     */</span></span>
+<span class="pl-s1">    <span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">slugSettings</span>(){</span>
+<span class="pl-s1">        <span class="pl-k">return</span> [</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>slug<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>title<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        ];</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">}</span></pre></div>
+
+<p>Then every time you create a new post like below, the slug will be generated automatically for you.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$post</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Post</span>([</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>title<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>some post is here<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">]);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$post</span><span class="pl-k">-&gt;</span>save();</span></pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/harran-ali">harran-ali</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
