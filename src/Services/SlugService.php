@@ -11,6 +11,13 @@ class SlugService{
 		$this->settings = config()->get('slugit');
 	}
 
+	/**
+     * Generate the slug for a specific model
+     *
+     * @param  Illuminate\Database\Eloquent\Model  $model
+     * @param  array  $sttings
+     * @return true
+     */
 	public function generate($model, $sttings){
 		$this->model = $model;
 		foreach ($sttings as $slugField => $source) {
@@ -25,6 +32,12 @@ class SlugService{
 		return true;
 	}
 
+	/**
+     * convert a string to slug format
+     *
+     * @param  string $string
+     * @return string
+     */
 	private function buildSlugBase($string){
 	 	//remove all special chars
 	    $string = preg_replace('~[^\pL\d ]+~u', '', $string);
@@ -44,6 +57,13 @@ class SlugService{
 	    return $string;
 	}
 
+	/**
+     * make slug unique by appending a number at the end
+     *
+     * @param  string $slug
+     * @param  string $slugField
+     * @return string
+     */
 	private function makeUnique($slug, $slugField){
 	 	$row = $this->model->where($slugField, 'like', '%' . $slug . '%')->orderBy($slugField, 'desc')->first();
 	 	if( is_null($row) ){
@@ -56,6 +76,13 @@ class SlugService{
 	 	return $slug;
 	}
 
+	/**
+     * make slug unique by appending a number at the end and checking the database recursively
+     *
+     * @param  int    $startingDigit
+     * @param  string $slug
+     * @return string
+     */
 	private function recursiveMakeUnique($startingDigit, $slug, $slugField){
 		$buildedSlug = $slug . $this->settings['separator'] . $startingDigit;
 	 	$row = $this->model->where($slugField, '=',  $buildedSlug )->orderBy($slugField, 'desc')->first();
