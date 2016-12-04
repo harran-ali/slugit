@@ -1,4 +1,7 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/584428be1f3a6d01f2f6f55c/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/584428be1f3a6d01f2f6f55c)
+[![Latest Stable Version](https://poser.pugx.org/harran/slugit/v/stable)](https://packagist.org/packages/harran/slugit)
+[![Latest Unstable Version](https://poser.pugx.org/harran/slugit/v/unstable)](https://packagist.org/packages/harran/slugit)
+[![License](https://poser.pugx.org/harran/slugit/license)](https://packagist.org/packages/harran/slugit)
 
 # Slugit
 Slugit is a laravel slug generator for eloquent models with support for almost all languages.
