@@ -1,3 +1,5 @@
+[![Dependency Status](https://www.versioneye.com/user/projects/584428be1f3a6d01f2f6f55c/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/584428be1f3a6d01f2f6f55c)
+
 # Slugit
 Slugit is a laravel slug generator for eloquent models with support for almost all languages.
 
