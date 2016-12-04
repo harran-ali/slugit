@@ -15,7 +15,7 @@ Slugit is a laravel slug generator for eloquent models with support for almost a
 ## Installation 
 You can install the package via composer by simply running the following command
 ```shell
-$ composer require harran/slugit:^0.1.0
+$ composer require harran/slugit
 ```
 
 Then add the service provider to this file `config/app.php`
