@@ -35,7 +35,6 @@ class SlugitServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/config/slugit.php', 'slugit');
-
         $this->app->bind(ModelObserver::class, function ($app) {
             return new ModelObserver(new SlugService);
         });

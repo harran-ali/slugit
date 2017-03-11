@@ -87,7 +87,4 @@ class SlugService{
 
 	    return $string;
 	}
-
-
-
 }
