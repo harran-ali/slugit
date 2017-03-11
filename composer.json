@@ -1,0 +1,30 @@
+{
+    "name": "harran/slugit",
+    "homepage" : "https://github.com/harran-ali/slugit",
+    "description": "Slugit is a laravel slug generator for eloquent models with support for all languages.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "eloquent",
+        "slug",
+        "languages"
+      ],
+    "authors": [
+        {
+            "name": "Harran Ali",
+            "email": "harran.m@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "~5.6 || ~7.0",
+        "illuminate/config": "5.1.* || 5.2.* || 5.3.*",
+        "illuminate/database": "5.1.* || 5.2.* || 5.3.*",
+        "illuminate/support": "5.1.* || 5.2.* || 5.3.*"
+    },
+    "autoload": {
+    "psr-4": {
+      "Harran\\Slugit\\": "src"
+    }
+  }
+}
