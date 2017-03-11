@@ -27,7 +27,7 @@ Then add the service provider to this file `config/app.php`
 
 Final step, publish the config file using the following command
 ```shell
-php artisan vendor:publish --provider=" Harran\Slugit\SlugitServiceProvider"
+php artisan vendor:publish
 ```
 
 ##Usage 
